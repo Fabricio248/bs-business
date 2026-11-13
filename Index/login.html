@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../StyleSheet/style.css">
+    <title>Login - B.S.BUSINESS</title>
+</head>
+<body class="body-auth">
+
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>B.S.BUSINESS</h1>
+            <p>Acesse a sua conta</p>
+        </div>
+
+        <form class="auth-form" id="formLogin">
+            <div class="input-group">
+                <label>Entrar como</label>
+                <div class="tipo-conta-selector">
+                    <label class="radio-label">
+                        <input type="radio" name="tipo_login" value="cliente" checked onchange="alternarTipoLogin(this.value)">
+                        Cliente (E-mail)
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="tipo_login" value="vendedor" onchange="alternarTipoLogin(this.value)">
+                        Vendedor (Chave 12 dígitos)
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="identificador" id="labelIdentificador">E-mail</label>
+                <input type="text" id="identificador" name="identificador" placeholder="seu.email@exemplo.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </div>
+
+            <button type="submit" class="btn-auth">Entrar</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Ainda não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a></p>
+            <p><a href="index.html">&larr; Voltar para a página inicial</a></p>
+        </div>
+    </div>
+
+    <script src="../JavaScript/main.js"></script>
+</body>
+</html>

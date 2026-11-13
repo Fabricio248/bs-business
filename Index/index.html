@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../StyleSheet/style.css">
+    <title>B.S.BUSINESS - Buy . Sell . Negócios</title>
+</head>
+<body>
+
+    <header class="titulo">
+        <div class="brand">
+            <h1>B.S.BUSINESS</h1>
+            <p>BUY . SELL . NEGÓCIOS</p>
+        </div>
+
+        <!-- Seletor de Categoria Totalmente Clicável -->
+        <div id="categorias1" class="custom-select-wrapper">
+            <svg class="icone-categoria" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+            </svg>
+            <select id="selectCategoria" aria-label="Categorias de Produtos">
+                <option value="">Todas as Categorias</option>
+                <option value="geral">Geral</option>
+                <option value="eletronicos">Eletrônicos e Tech</option>
+                <option value="moda">Moda e Estilo</option>
+                <option value="higiene">Higiene e Beleza</option>
+                <option value="casa">Casa e Decoração</option>
+                <option value="esporte">Esporte e Lazer</option>
+                <option value="alimentos">Alimentos e Bebidas</option>
+            </select>
+            <svg class="seta-categoria" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M7 10l5 5 5-5z"/>
+            </svg>
+        </div>
+
+        <div id="Busca">
+            <svg class="simbolo-busca" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+            <input type="text" id="inputBusca" placeholder="Buscar produtos, marcas e muito mais...">
+        </div>
+
+        <div class="acoes-header">
+            <!-- Área de Login / Avatar do Usuário -->
+            <div id="login">
+                <a href="login.html" class="link-login" id="linkLoginUsuario">
+                    <svg class="icone-user" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                    <button id="botao" type="button">Entrar / Cadastrar</button>
+                </a>
+
+                <!-- Avatar do Usuário Logado -->
+                <div id="avatarContainer" class="avatar-wrapper" style="display: none;">
+                    <button id="btnAvatarUsuario" class="btn-avatar" title="Perfil do Usuário" type="button">
+                        <img id="imgAvatarUsuario" src="" alt="Avatar" style="display: none;">
+                        <svg id="svgAvatarPadrao" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Menu do Perfil -->
+                    <div id="dropdownAvatar" class="dropdown-avatar-menu">
+                        <div class="avatar-menu-header">
+                            <strong id="nomeUsuarioMenu">Usuário</strong>
+                            <span id="tipoUsuarioMenu" class="badge-tipo-usuario">Cliente</span>
+                        </div>
+                        <hr class="avatar-divisor">
+                        <label for="inputFotoPerfil" class="avatar-menu-item">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                            Inserir foto de perfil
+                        </label>
+                        <input type="file" id="inputFotoPerfil" accept="image/*" style="display: none;">
+
+                        <button type="button" id="btnTrocarConta" class="avatar-menu-item">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 0-1.93.59 5 5 0 0 1 0 5.82A3.39 3.39 0 0 0 15 11a3.5 3.5 0 0 0 0-7Z"/></svg>
+                            Trocar conta
+                        </button>
+
+                        <button type="button" id="btnLogout" class="avatar-menu-item item-sair">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+                            Sair (Log out)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão do Carrinho -->
+            <div id="carrinho_compras">
+                <button type="button" id="btnAbrirCarrinho" title="Ver carrinho de compras" class="link-carrinho">
+                    <svg class="icone-carrinho" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25z"/>
+                    </svg>
+                    <span class="badge-carrinho" id="badgeCarrinho">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="introducao">
+        <div class="hero-content">
+            <span class="hero-badge">MARKETPLACE CORPORATIVO & VAREJO</span>
+            <h2>Bem-vindo ao <span>B.S.BUSINESS</span></h2>
+            <p>A sua plataforma completa de compra, venda e bons negócios. Conectando empresas e clientes com segurança e agilidade.</p>
+            
+            <div class="area-vendedor-topo">
+                <button id="btnNovoProduto" class="btn-vendedor-discreto" style="display: none;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    Cadastrar produto
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main class="conteudo-principal">
+        <aside id="propaganda_a_esquerda" class="banner-lateral">
+            <div class="card-propaganda card-dark">
+                <span class="tag-promo">DESTAQUE TECH</span>
+                <h3>Até 40% OFF</h3>
+                <p>Em toda a linha de tecnologia, notebooks e eletrônicos selecionados.</p>
+                <button class="btn-banner" onclick="filtrarPorCategoria('eletronicos')">Conferir Ofertas</button>
+            </div>
+        </aside>
+
+        <section id="catalogo">
+            <!-- Renderizado via JS -->
+        </section>
+
+        <aside id="propaganda_a_Direita" class="banner-lateral">
+            <div class="card-propaganda">
+                <span class="tag-promo">FRETE GRÁTIS</span>
+                <h3>Primeira Compra?</h3>
+                <p>Use o cupom <strong>BSFIRST</strong> e garanta entrega expressa gratuita.</p>
+                <button class="btn-banner" onclick="filtrarPorCategoria('')">Explorar Loja</button>
+            </div>
+        </aside>
+    </main>
+
+    <!-- ABA LATERAL (DRAWER) DO CARRINHO -->
+    <div id="overlayCarrinho" class="carrinho-overlay"></div>
+    <aside id="abaCarrinho" class="carrinho-drawer">
+        <div class="carrinho-header">
+            <div class="carrinho-titulo">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25z"/>
+                </svg>
+                <h3>Meu Carrinho</h3>
+            </div>
+            <button type="button" id="btnFecharCarrinho" class="btn-fechar-drawer">&times;</button>
+        </div>
+
+        <div id="listaItensCarrinho" class="carrinho-body"></div>
+
+        <div class="carrinho-footer">
+            <div class="carrinho-resumo">
+                <span>Subtotal:</span>
+                <strong id="valorTotalCarrinho">R$ 0,00</strong>
+            </div>
+
+            <button type="button" id="btnFinalizarCompra" class="btn-finalizar-compra">
+                Finalizar Compra
+            </button>
+
+            <button type="button" id="btnRetomarCompras" class="btn-retomar-compras">
+                Retomar Compras
+            </button>
+
+            <div class="carrinho-rodape-discreto">
+                <button type="button" id="btnApagarCarrinho" class="btn-apagar-carrinho">
+                    Apagar carrinho
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MODAL DE DETALHES DO PRODUTO (Com Vendas, Estoque, Avaliações, Compra Direta e Edição) -->
+    <div id="modalProduto" class="modal-overlay">
+        <div class="modal-content modal-produto-largo">
+            <button class="modal-close" onclick="fecharModalProduto()">&times;</button>
+            <div class="modal-body-produto">
+                <div class="modal-imagem-container">
+                    <img id="modalImg" src="" alt="Produto">
+                </div>
+                <div class="modal-detalhes">
+                    <div class="modal-badges-topo">
+                        <span id="modalEstado" class="badge-estado"></span>
+                        <span id="modalVendas" class="badge-vendas">0 vendidos</span>
+                    </div>
+                    <h2 id="modalNome"></h2>
+                    <div id="modalEstrelasResumo" class="avaliacao-estrelas">★★★★★ <span>(4.9)</span></div>
+                    <p id="modalPreco" class="modal-preco"></p>
+                    <p id="modalEstoque" class="modal-estoque"></p>
+                    
+                    <div class="modal-descricao-box">
+                        <h3>Descrição do Produto</h3>
+                        <p id="modalDescricao"></p>
+                    </div>
+
+                    <div class="modal-acoes-compra">
+                        <button id="btnModalComprarDireto" class="btn-comprar-agora">Comprar Agora</button>
+                        <button id="btnModalAdicionarCarrinho" class="btn-comprar">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <!-- Botão de Edição (Aparece apenas para o vendedor dono do produto) -->
+                    <button id="btnEditarProdutoModal" class="btn-editar-produto" style="display: none;">
+                        ✏️ Editar Produto / Estoque
+                    </button>
+                </div>
+            </div>
+
+            <!-- Seção de Avaliações do Produto -->
+            <div class="modal-avaliacoes-secao">
+                <h3>Avaliações de Clientes</h3>
+                <div id="listaAvaliacoesProduto" class="lista-avaliacoes">
+                    <!-- Avaliações carregadas dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA CADASTRO / EDIÇÃO DE PRODUTO (Vendedor) -->
+    <div id="modalCadastroProduto" class="modal-overlay">
+        <div class="modal-content modal-form-content">
+            <button class="modal-close" onclick="fecharModalCadastroProduto()">&times;</button>
+            <h2 id="tituloModalProdutoForm">Cadastrar Novo Produto</h2>
+            <form id="formCadastroProduto" class="auth-form">
+                <input type="hidden" id="prodIdEdicao" value="">
+                <div class="input-group">
+    <label>Imagem do Produto</label>
+    <div id="dropZoneImagem" class="drop-zone">
+        <input type="file" id="prodImgFile" accept="image/*" hidden>
+        <input type="hidden" id="prodImg" required>
+        
+        <div id="dropZonePrompt" class="drop-zone-prompt">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
+                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+            </svg>
+            <p><strong>Arraste a imagem aqui</strong> ou clique para selecionar da pasta</p>
+            <span>PNG, JPG ou WEBP</span>
+        </div>
+
+        <div id="dropZonePreview" class="drop-zone-preview" style="display: none;">
+            <img id="imgPreviewProduto" src="" alt="Pré-visualização">
+            <button type="button" id="btnRemoverImgPreview" class="btn-remover-preview">Trocar imagem</button>
+        </div>
+    </div>
+</div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="prodPreco">Preço (R$)</label>
+                        <input type="number" id="prodPreco" step="0.01" required placeholder="1299.90">
+                    </div>
+                    <div class="input-group">
+                        <label for="prodQtd">Quantidade em Estoque</label>
+                        <input type="number" id="prodQtd" min="0" required placeholder="10">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="prodCategoria">Categoria</label>
+                        <select id="prodCategoria" required>
+                            <option value="geral">Geral</option>
+                            <option value="eletronicos">Eletrônicos e Tech</option>
+                            <option value="moda">Moda e Estilo</option>
+                            <option value="higiene">Higiene e Beleza</option>
+                            <option value="casa">Casa e Decoração</option>
+                            <option value="esporte">Esporte e Lazer</option>
+                            <option value="alimentos">Alimentos e Bebidas</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="prodEstado">Estado do Produto</label>
+                        <select id="prodEstado" required>
+                            <option value="Novo">Novo</option>
+                            <option value="Seminovo">Seminovo</option>
+                            <option value="Usado">Usado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="prodImg">URL da Imagem</label>
+                    <input type="url" id="prodImg" placeholder="https://..." required>
+                </div>
+
+                <div class="input-group">
+                    <label for="prodDescricao">Descrição Detalhada</label>
+                    <textarea id="prodDescricao" rows="3" required placeholder="Descreva os detalhes do item..."></textarea>
+                </div>
+
+                <button type="submit" id="btnSalvarProdutoForm" class="btn-auth">Publicar Anúncio</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DE PAGAMENTO (PIX, CARTÃO, BOLETO) -->
+    <div id="modalPagamento" class="modal-overlay">
+        <div class="modal-content modal-form-content">
+            <button class="modal-close" onclick="fecharModalPagamento()">&times;</button>
+            <h2>Finalizar Pagamento</h2>
+            <p class="pagamento-total-info">Total a pagar: <strong id="pagamentoValorTotal">R$ 0,00</strong></p>
+
+            <!-- Abas de Forma de Pagamento -->
+            <div class="pagamento-tabs">
+                <button type="button" class="tab-pag active" onclick="selecionarMetodoPagamento('pix', this)">PIX</button>
+                <button type="button" class="tab-pag" onclick="selecionarMetodoPagamento('cartao', this)">Cartão</button>
+                <button type="button" class="tab-pag" onclick="selecionarMetodoPagamento('boleto', this)">Boleto</button>
+            </div>
+
+            <!-- 1. Opção PIX -->
+            <div id="painelPix" class="painel-pagamento">
+                <p class="instrucao-pag">Escaneie o QR Code abaixo ou copie a chave PIX aleatória:</p>
+                <div class="qrcode-box">
+                    <!-- Imagem que resulta em "ERRO" conforme solicitado -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=ERRO" alt="ERRO" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="qrcode-erro-fallback" style="display: none;">ERRO</div>
+                    <span class="legenda-qr-erro">Status QR Code: ERRO</span>
+                </div>
+                <div class="chave-copia-box">
+                    <label>Chave PIX Aleatória:</label>
+                    <div class="input-copia-row">
+                        <input type="text" id="chavePixAleatoria" readonly>
+                        <button type="button" onclick="copiarTexto('chavePixAleatoria')">Copiar</button>
+                    </div>
+                </div>
+                <button type="button" class="btn-auth" style="width: 100%; margin-top: 16px;" onclick="confirmarPagamentoPedido('PIX')">Confirmar Pagamento PIX</button>
+            </div>
+
+            <!-- 2. Opção Cartão -->
+            <form id="painelCartao" class="painel-pagamento auth-form" style="display: none;" onsubmit="event.preventDefault(); confirmarPagamentoPedido('Cartão de Crédito');">
+                <div class="input-group">
+                    <label for="numCartao">Número do Cartão</label>
+                    <input type="text" id="numCartao" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                </div>
+                <div class="input-group">
+                    <label for="nomeCartao">Nome Impresso no Cartão</label>
+                    <input type="text" id="nomeCartao" placeholder="COMO NO CARTÃO" required>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="validadeCartao">Validade</label>
+                        <input type="text" id="validadeCartao" placeholder="MM/AA" maxlength="5" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cvvCartao">CVV</label>
+                        <input type="text" id="cvvCartao" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="parcelasCartao">Parcelamento</label>
+                    <select id="parcelasCartao">
+                        <option value="1">1x sem juros</option>
+                        <option value="2">2x sem juros</option>
+                        <option value="3">3x sem juros</option>
+                        <option value="6">6x sem juros</option>
+                        <option value="10">10x sem juros</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-auth">Pagar com Cartão</button>
+            </form>
+
+            <!-- 3. Opção Boleto -->
+            <div id="painelBoleto" class="painel-pagamento" style="display: none;">
+                <p class="instrucao-pag">O boleto vence em 3 dias úteis. Copie a linha digitável abaixo para pagar no seu banco:</p>
+                <div class="chave-copia-box">
+                    <label>Linha Digitável do Boleto:</label>
+                    <div class="input-copia-row">
+                        <input type="text" id="codigoBoleto" readonly>
+                        <button type="button" onclick="copiarTexto('codigoBoleto')">Copiar</button>
+                    </div>
+                </div>
+                <button type="button" class="btn-auth" style="width: 100%; margin-top: 16px;" onclick="confirmarPagamentoPedido('Boleto Bancário')">Gerar e Concluir Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JavaScript/main.js"></script>
+</body>
+</html>
