@@ -12,14 +12,23 @@ app.use(cors());
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ limit: '15mb', extended: true }));
 const path = require('path');
+const fs = require('fs');
 
-// Serve as pastas do seu projeto diretamente
+// Detecta automaticamente onde a pasta index está (minúscula, maiúscula ou subpasta)
+const possiveisCaminhos = [
+  path.join(__dirname, 'index'),
+  path.join(__dirname, 'Index'),
+  path.join(process.cwd(), 'index'),
+  path.join(process.cwd(), 'Index')
+];
+
+const pastaIndex = possiveisCaminhos.find(p => fs.existsSync(p)) || path.join(__dirname, 'index');
+
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, 'index')));
+app.use(express.static(pastaIndex));
 
-// Redireciona a raiz "/" para o index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index', 'index.html'));
+  res.sendFile(path.join(pastaIndex, 'index.html'));
 });
 
 // Configuração de E-mail (Configure EMAIL_USER e EMAIL_PASS no seu .env para envio real)
