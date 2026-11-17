@@ -14,24 +14,51 @@
             <p>BUY . SELL . NEGÓCIOS</p>
         </div>
 
-        <!-- Seletor de Categoria Totalmente Clicável -->
-        <div id="categorias1" class="custom-select-wrapper">
-            <svg class="icone-categoria" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-            </svg>
-            <select id="selectCategoria" aria-label="Categorias de Produtos">
-                <option value="">Todas as Categorias</option>
-                <option value="geral">Geral</option>
-                <option value="eletronicos">Eletrônicos e Tech</option>
-                <option value="moda">Moda e Estilo</option>
-                <option value="higiene">Higiene e Beleza</option>
-                <option value="casa">Casa e Decoração</option>
-                <option value="esporte">Esporte e Lazer</option>
-                <option value="alimentos">Alimentos e Bebidas</option>
-            </select>
-            <svg class="seta-categoria" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M7 10l5 5 5-5z"/>
-            </svg>
+        <!-- Seletor Visual de Categorias com Imagens -->
+        <div id="categorias1" class="categoria-dropdown-visual">
+            <input type="hidden" id="selectCategoria" value="">
+            <button type="button" id="btnCategoriaAtual" class="btn-categoria-visual">
+                <img id="imgCategoriaAtual" src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=80" alt="Categoria">
+                <span id="textoCategoriaAtual">Todas as Categorias</span>
+                <svg class="seta-categoria" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M7 10l5 5 5-5z"/>
+                </svg>
+            </button>
+
+            <div id="listaCategoriasVisual" class="menu-categorias-imagens">
+                <button type="button" class="opcao-cat-img ativa" onclick="selecionarCategoriaVisual('', 'Todas as Categorias', 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=80')">
+                    <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=80" alt="Todas">
+                    <span>Todas as Categorias</span>
+                </button>
+                <button type="button" class="opcao-cat-img" onclick="selecionarCategoriaVisual('geral', 'Geral', 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=80')">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=80" alt="Geral">
+                    <span>Geral</span>
+                </button>
+                <button type="button" class="opcao-cat-img" onclick="selecionarCategoriaVisual('eletronicos', 'Eletrônicos e Tech', 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=80')">
+                    <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=80" alt="Eletrônicos">
+                    <span>Eletrônicos e Tech</span>
+                </button>
+                <button type="button" class="opcao-cat-img" onclick="selecionarCategoriaVisual('moda', 'Moda e Estilo', 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=80')">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=80" alt="Moda">
+                    <span>Moda e Estilo</span>
+                </button>
+                <button type="button" class="opcao-cat-img" onclick="selecionarCategoriaVisual('higiene', 'Higiene e Beleza', 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=80')">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=80" alt="Higiene e Beleza">
+                    <span>Higiene e Beleza</span>
+                </button>
+                <button type="button" class="opcao-cat-img" onclick="selecionarCategoriaVisual('casa', 'Casa e Decoração', 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=80')">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=80" alt="Casa e Decoração">
+                    <span>Casa e Decoração</span>
+                </button>
+                <button type="button" class="opcao-cat-img" onclick="selecionarCategoriaVisual('esporte', 'Esporte e Lazer', 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=80')">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=80" alt="Esporte">
+                    <span>Esporte e Lazer</span>
+                </button>
+                <button type="button" class="opcao-cat-img" onclick="selecionarCategoriaVisual('alimentos', 'Alimentos e Bebidas', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=80')">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=80" alt="Alimentos">
+                    <span>Alimentos e Bebidas</span>
+                </button>
+            </div>
         </div>
 
         <div id="Busca">
@@ -42,7 +69,6 @@
         </div>
 
         <div class="acoes-header">
-            <!-- Área de Login / Avatar do Usuário -->
             <div id="login">
                 <a href="login.html" class="link-login" id="linkLoginUsuario">
                     <svg class="icone-user" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -51,7 +77,6 @@
                     <button id="botao" type="button">Entrar / Cadastrar</button>
                 </a>
 
-                <!-- Avatar do Usuário Logado -->
                 <div id="avatarContainer" class="avatar-wrapper" style="display: none;">
                     <button id="btnAvatarUsuario" class="btn-avatar" title="Perfil do Usuário" type="button">
                         <img id="imgAvatarUsuario" src="" alt="Avatar" style="display: none;">
@@ -60,7 +85,6 @@
                         </svg>
                     </button>
 
-                    <!-- Menu do Perfil -->
                     <div id="dropdownAvatar" class="dropdown-avatar-menu">
                         <div class="avatar-menu-header">
                             <strong id="nomeUsuarioMenu">Usuário</strong>
@@ -86,7 +110,6 @@
                 </div>
             </div>
 
-            <!-- Botão do Carrinho -->
             <div id="carrinho_compras">
                 <button type="button" id="btnAbrirCarrinho" title="Ver carrinho de compras" class="link-carrinho">
                     <svg class="icone-carrinho" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
@@ -98,12 +121,15 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
+    <!-- Hero Banner com Novo Texto Institucional -->
     <section id="introducao">
         <div class="hero-content">
             <span class="hero-badge">MARKETPLACE CORPORATIVO & VAREJO</span>
             <h2>Bem-vindo ao <span>B.S.BUSINESS</span></h2>
-            <p>A sua plataforma completa de compra, venda e bons negócios. Conectando empresas e clientes com segurança e agilidade.</p>
+            <p class="hero-subtitulo">A sua plataforma completa de compra, venda e bons negócios. Conectando empresas e clientes com segurança e agilidade.</p>
+            <p class="hero-missao">
+                "Comprar, vender, negociar é o jeito que a B.S.BUSINESS leva prosperidade e dignidade para as famílias brasileiras."
+            </p>
             
             <div class="area-vendedor-topo">
                 <button id="btnNovoProduto" class="btn-vendedor-discreto" style="display: none;">
@@ -117,30 +143,46 @@
     </section>
 
     <main class="conteudo-principal">
+        <!-- PROPAGANDA ESQUERDA (Ocupa a altura inteira da tela) -->
         <aside id="propaganda_a_esquerda" class="banner-lateral">
-            <div class="card-propaganda card-dark">
-                <span class="tag-promo">DESTAQUE TECH</span>
-                <h3>Até 40% OFF</h3>
-                <p>Em toda a linha de tecnologia, notebooks e eletrônicos selecionados.</p>
-                <button class="btn-banner" onclick="filtrarPorCategoria('eletronicos')">Conferir Ofertas</button>
+            <div class="sticky-sidebar-full">
+                <div class="card-propaganda card-dark card-full-height">
+                    <span class="tag-promo">DESTAQUE TECH</span>
+                    <h3>Até 40% OFF</h3>
+                    <p>Em toda a linha de tecnologia, notebooks e eletrônicos selecionados para impulsionar o seu dia.</p>
+                    <img class="img-banner-full" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400" alt="Tecnologia">
+                    <button class="btn-banner" onclick="filtrarPorCategoria('eletronicos')">Conferir Ofertas</button>
+                </div>
             </div>
         </aside>
 
-        <section id="catalogo">
-            <!-- Renderizado via JS -->
+        <!-- CATÁLOGO COM SCROLL INFINITO / GRADUAL -->
+        <section class="coluna-catalogo">
+            <div id="catalogo"></div>
+            <div id="sentinelaScroll" class="sentinela-scroll">
+                <span id="textoCarregandoScroll">Role para carregar mais ofertas...</span>
+            </div>
         </section>
 
+        <!-- PROPAGANDA DIREITA DINÂMICA (Ocupa a altura inteira da tela) -->
         <aside id="propaganda_a_Direita" class="banner-lateral">
-            <div class="card-propaganda">
-                <span class="tag-promo">FRETE GRÁTIS</span>
-                <h3>Primeira Compra?</h3>
-                <p>Use o cupom <strong>BSFIRST</strong> e garanta entrega expressa gratuita.</p>
-                <button class="btn-banner" onclick="filtrarPorCategoria('')">Explorar Loja</button>
+            <div class="sticky-sidebar-full">
+                <div id="cardPropagandaDinamica" class="card-propaganda card-recomendacao-dinamica card-full-height">
+                    <div class="topo-dinamico">
+                        <span class="tag-promo">✨ RECOMENDADO PARA VOCÊ</span>
+                        <div class="barra-progresso-ad"><div id="barraTimerAd"></div></div>
+                    </div>
+                    <img id="adDinamicoImg" src="https://via.placeholder.com/300" alt="Recomendação">
+                    <span id="adDinamicoCat" class="ad-cat-label">Destaque</span>
+                    <h4 id="adDinamicoNome">Carregando oferta...</h4>
+                    <p id="adDinamicoPreco" class="ad-preco-label">R$ 0,00</p>
+                    <button id="btnAdDinamicoVer" class="btn-banner">Ver Oferta</button>
+                </div>
             </div>
         </aside>
     </main>
 
-    <!-- ABA LATERAL (DRAWER) DO CARRINHO -->
+    <!-- ABA LATERAL DO CARRINHO -->
     <div id="overlayCarrinho" class="carrinho-overlay"></div>
     <aside id="abaCarrinho" class="carrinho-drawer">
         <div class="carrinho-header">
@@ -177,7 +219,7 @@
         </div>
     </aside>
 
-    <!-- MODAL DE DETALHES DO PRODUTO (Com Vendas, Estoque, Avaliações, Compra Direta e Edição) -->
+    <!-- MODAL DE DETALHES DO PRODUTO -->
     <div id="modalProduto" class="modal-overlay">
         <div class="modal-content modal-produto-largo">
             <button class="modal-close" onclick="fecharModalProduto()">&times;</button>
@@ -205,24 +247,20 @@
                         <button id="btnModalAdicionarCarrinho" class="btn-comprar">Adicionar ao Carrinho</button>
                     </div>
 
-                    <!-- Botão de Edição (Aparece apenas para o vendedor dono do produto) -->
                     <button id="btnEditarProdutoModal" class="btn-editar-produto" style="display: none;">
                         ✏️ Editar Produto / Estoque
                     </button>
                 </div>
             </div>
 
-            <!-- Seção de Avaliações do Produto -->
             <div class="modal-avaliacoes-secao">
                 <h3>Avaliações de Clientes</h3>
-                <div id="listaAvaliacoesProduto" class="lista-avaliacoes">
-                    <!-- Avaliações carregadas dinamicamente -->
-                </div>
+                <div id="listaAvaliacoesProduto" class="lista-avaliacoes"></div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL PARA CADASTRO / EDIÇÃO DE PRODUTO (Vendedor) -->
+    <!-- MODAL PARA CADASTRO / EDIÇÃO DE PRODUTO -->
     <div id="modalCadastroProduto" class="modal-overlay">
         <div class="modal-content modal-form-content">
             <button class="modal-close" onclick="fecharModalCadastroProduto()">&times;</button>
@@ -230,25 +268,30 @@
             <form id="formCadastroProduto" class="auth-form">
                 <input type="hidden" id="prodIdEdicao" value="">
                 <div class="input-group">
-    <label>Imagem do Produto</label>
-    <div id="dropZoneImagem" class="drop-zone">
-        <input type="file" id="prodImgFile" accept="image/*" hidden>
-        <input type="hidden" id="prodImg" required>
-        
-        <div id="dropZonePrompt" class="drop-zone-prompt">
-            <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
-                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
-            </svg>
-            <p><strong>Arraste a imagem aqui</strong> ou clique para selecionar da pasta</p>
-            <span>PNG, JPG ou WEBP</span>
-        </div>
+                    <label for="prodNome">Nome do Produto</label>
+                    <input type="text" id="prodNome" required placeholder="Ex: Notebook UltraSlim i7">
+                </div>
 
-        <div id="dropZonePreview" class="drop-zone-preview" style="display: none;">
-            <img id="imgPreviewProduto" src="" alt="Pré-visualização">
-            <button type="button" id="btnRemoverImgPreview" class="btn-remover-preview">Trocar imagem</button>
-        </div>
-    </div>
-</div>
+                <div class="input-group">
+                    <label>Imagem do Produto</label>
+                    <div id="dropZoneImagem" class="drop-zone">
+                        <input type="file" id="prodImgFile" accept="image/*" hidden>
+                        <input type="hidden" id="prodImg" required>
+                        
+                        <div id="dropZonePrompt" class="drop-zone-prompt">
+                            <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
+                                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                            </svg>
+                            <p><strong>Arraste a imagem aqui</strong> ou clique para selecionar</p>
+                            <span>PNG, JPG ou WEBP</span>
+                        </div>
+
+                        <div id="dropZonePreview" class="drop-zone-preview" style="display: none;">
+                            <img id="imgPreviewProduto" src="" alt="Pré-visualização">
+                            <button type="button" id="btnRemoverImgPreview" class="btn-remover-preview">Trocar imagem</button>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-row">
                     <div class="input-group">
@@ -285,11 +328,6 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="prodImg">URL da Imagem</label>
-                    <input type="url" id="prodImg" placeholder="https://..." required>
-                </div>
-
-                <div class="input-group">
                     <label for="prodDescricao">Descrição Detalhada</label>
                     <textarea id="prodDescricao" rows="3" required placeholder="Descreva os detalhes do item..."></textarea>
                 </div>
@@ -299,28 +337,58 @@
         </div>
     </div>
 
-    <!-- MODAL DE PAGAMENTO (PIX, CARTÃO, BOLETO) -->
+    <!-- MODAL DE PAGAMENTO + ESCOLHA DE 3 TRANSPORTADORAS -->
     <div id="modalPagamento" class="modal-overlay">
-        <div class="modal-content modal-form-content">
+        <div class="modal-content modal-form-content modal-pagamento-largo">
             <button class="modal-close" onclick="fecharModalPagamento()">&times;</button>
-            <h2>Finalizar Pagamento</h2>
-            <p class="pagamento-total-info">Total a pagar: <strong id="pagamentoValorTotal">R$ 0,00</strong></p>
+            <h2>Finalizar Pedido</h2>
 
-            <!-- Abas de Forma de Pagamento -->
+            <!-- Seleção de Transportadoras -->
+            <div class="secao-transportadoras">
+                <label class="titulo-secao-pag">1. Escolha a Transportadora:</label>
+                <div class="lista-transportadoras">
+                    <label class="card-transportadora">
+                        <input type="radio" name="transportadora" value="AstroLog Express" data-frete="24.90" data-prazo="1 a 2 dias úteis" checked onchange="atualizarTotalComFrete()">
+                        <div class="transp-info">
+                            <strong>🚀 AstroLog Express</strong>
+                            <span>Entrega em 1 a 2 dias úteis</span>
+                        </div>
+                        <span class="transp-preco">R$ 24,90</span>
+                    </label>
+
+                    <label class="card-transportadora">
+                        <input type="radio" name="transportadora" value="ViaBrasil Cargas" data-frete="14.50" data-prazo="3 a 5 dias úteis" onchange="atualizarTotalComFrete()">
+                        <div class="transp-info">
+                            <strong>🚚 ViaBrasil Cargas</strong>
+                            <span>Entrega em 3 a 5 dias úteis</span>
+                        </div>
+                        <span class="transp-preco">R$ 14,50</span>
+                    </label>
+
+                    <label class="card-transportadora">
+                        <input type="radio" name="transportadora" value="EcoFrete Nacional" data-frete="7.90" data-prazo="6 a 9 dias úteis" onchange="atualizarTotalComFrete()">
+                        <div class="transp-info">
+                            <strong>📦 EcoFrete Nacional</strong>
+                            <span>Entrega em 6 a 9 dias úteis</span>
+                        </div>
+                        <span class="transp-preco">R$ 7,90</span>
+                    </label>
+                </div>
+            </div>
+
+            <p class="pagamento-total-info">Total com Frete: <strong id="pagamentoValorTotal">R$ 0,00</strong></p>
+
+            <label class="titulo-secao-pag">2. Forma de Pagamento:</label>
             <div class="pagamento-tabs">
                 <button type="button" class="tab-pag active" onclick="selecionarMetodoPagamento('pix', this)">PIX</button>
                 <button type="button" class="tab-pag" onclick="selecionarMetodoPagamento('cartao', this)">Cartão</button>
                 <button type="button" class="tab-pag" onclick="selecionarMetodoPagamento('boleto', this)">Boleto</button>
             </div>
 
-            <!-- 1. Opção PIX -->
             <div id="painelPix" class="painel-pagamento">
                 <p class="instrucao-pag">Escaneie o QR Code abaixo ou copie a chave PIX aleatória:</p>
                 <div class="qrcode-box">
-                    <!-- Imagem que resulta em "ERRO" conforme solicitado -->
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=ERRO" alt="ERRO" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="qrcode-erro-fallback" style="display: none;">ERRO</div>
-                    <span class="legenda-qr-erro">Status QR Code: ERRO</span>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=BSBUSINESSPIX" alt="QR Code PIX">
                 </div>
                 <div class="chave-copia-box">
                     <label>Chave PIX Aleatória:</label>
@@ -329,10 +397,9 @@
                         <button type="button" onclick="copiarTexto('chavePixAleatoria')">Copiar</button>
                     </div>
                 </div>
-                <button type="button" class="btn-auth" style="width: 100%; margin-top: 16px;" onclick="confirmarPagamentoPedido('PIX')">Confirmar Pagamento PIX</button>
+                <button type="button" class="btn-auth" style="width: 100%; margin-top: 14px;" onclick="confirmarPagamentoPedido('PIX')">Confirmar Pagamento PIX</button>
             </div>
 
-            <!-- 2. Opção Cartão -->
             <form id="painelCartao" class="painel-pagamento auth-form" style="display: none;" onsubmit="event.preventDefault(); confirmarPagamentoPedido('Cartão de Crédito');">
                 <div class="input-group">
                     <label for="numCartao">Número do Cartão</label>
@@ -352,22 +419,11 @@
                         <input type="text" id="cvvCartao" placeholder="123" maxlength="4" required>
                     </div>
                 </div>
-                <div class="input-group">
-                    <label for="parcelasCartao">Parcelamento</label>
-                    <select id="parcelasCartao">
-                        <option value="1">1x sem juros</option>
-                        <option value="2">2x sem juros</option>
-                        <option value="3">3x sem juros</option>
-                        <option value="6">6x sem juros</option>
-                        <option value="10">10x sem juros</option>
-                    </select>
-                </div>
                 <button type="submit" class="btn-auth">Pagar com Cartão</button>
             </form>
 
-            <!-- 3. Opção Boleto -->
             <div id="painelBoleto" class="painel-pagamento" style="display: none;">
-                <p class="instrucao-pag">O boleto vence em 3 dias úteis. Copie a linha digitável abaixo para pagar no seu banco:</p>
+                <p class="instrucao-pag">O boleto vence em 3 dias úteis. Copie a linha digitável abaixo:</p>
                 <div class="chave-copia-box">
                     <label>Linha Digitável do Boleto:</label>
                     <div class="input-copia-row">
@@ -375,8 +431,85 @@
                         <button type="button" onclick="copiarTexto('codigoBoleto')">Copiar</button>
                     </div>
                 </div>
-                <button type="button" class="btn-auth" style="width: 100%; margin-top: 16px;" onclick="confirmarPagamentoPedido('Boleto Bancário')">Gerar e Concluir Pedido</button>
+                <button type="button" class="btn-auth" style="width: 100%; margin-top: 14px;" onclick="confirmarPagamentoPedido('Boleto Bancário')">Gerar e Concluir Pedido</button>
             </div>
+        </div>
+    </div>
+
+    <!-- MASCOTE BOY GALÁCTICO (Astronauta flutuante para boas-vindas e agradecimentos) -->
+    <div id="widgetBoyGalactico" class="boy-galactico-widget" style="display: none;">
+        <div class="boy-balao-fala">
+            <button type="button" class="boy-fechar" onclick="fecharBoyGalactico()">&times;</button>
+            <span class="boy-nome-tag">🚀 Boy Galáctico</span>
+            <p id="boyMensagemTexto">Olá! Bem-vindo à B.S.BUSINESS!</p>
+        </div>
+        <div class="boy-avatar-svg">
+            <!-- Ilustração SVG Exclusiva do Menininho Astronauta -->
+            <svg viewBox="0 0 120 120" width="92" height="92">
+                <!-- Mochila Espacial -->
+                <rect x="28" y="66" width="64" height="36" rx="10" fill="#1d4ed8"/>
+                <!-- Corpo Traje -->
+                <rect x="36" y="72" width="48" height="38" rx="14" fill="#ffffff" stroke="#061844" stroke-width="3"/>
+                <rect x="48" y="82" width="24" height="14" rx="4" fill="#061844"/>
+                <circle cx="54" cy="89" r="2.5" fill="#3b82f6"/>
+                <circle cx="66" cy="89" r="2.5" fill="#10b981"/>
+                <!-- Braços acenando -->
+                <path d="M36 78 Q18 65 22 50" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round"/>
+                <path d="M36 78 Q18 65 22 50" fill="none" stroke="#061844" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="22" cy="49" r="6" fill="#3b82f6"/>
+                <path d="M84 78 Q100 88 96 100" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round"/>
+                <circle cx="96" cy="100" r="6" fill="#3b82f6"/>
+                <!-- Capacete -->
+                <circle cx="60" cy="44" r="32" fill="#ffffff" stroke="#061844" stroke-width="3.5"/>
+                <!-- Antena -->
+                <line x1="60" y1="12" x2="60" y2="4" stroke="#061844" stroke-width="3"/>
+                <circle cx="60" cy="4" r="4" fill="#3b82f6"/>
+                <!-- Visor -->
+                <rect x="38" y="26" width="44" height="32" rx="15" fill="#020c24"/>
+                <!-- Rosto do Menininho -->
+                <circle cx="51" cy="42" r="3.2" fill="#ffffff"/>
+                <circle cx="69" cy="42" r="3.2" fill="#ffffff"/>
+                <circle cx="52" cy="41" r="1.2" fill="#3b82f6"/>
+                <circle cx="70" cy="41" r="1.2" fill="#3b82f6"/>
+                <path d="M54 49 Q60 55 66 49" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Reflexo do Visor -->
+                <path d="M43 31 Q50 28 56 30" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- MODAL DE AVALIAÇÃO APÓS ENTREGA (15s) COM BOY GALÁCTICO -->
+    <div id="modalAvaliacaoEntrega" class="modal-overlay">
+        <div class="modal-content modal-form-content modal-avaliacao-boy">
+            <button class="modal-close" onclick="fecharModalAvaliacao()">&times;</button>
+            <div class="cabecalho-boy-avaliacao">
+                <div class="mini-boy-icone">👨‍🚀</div>
+                <div>
+                    <span class="boy-badge-entrega">PRODUTO ENTREGUE!</span>
+                    <h3>Missão Cumprida pelo Boy Galáctico!</h3>
+                </div>
+            </div>
+            <p class="texto-pedido-boy">
+                Sua encomenda via <strong id="nomeTranspEntregue">Transportadora</strong> acabou de pousar na sua casa! Avalie o produto <strong id="nomeProdAvaliar">Produto</strong>:
+            </p>
+
+            <form id="formAvaliarProduto" class="auth-form">
+                <div class="estrelas-seletor" id="estrelasSeletor">
+                    <span data-nota="1">★</span>
+                    <span data-nota="2">★</span>
+                    <span data-nota="3">★</span>
+                    <span data-nota="4">★</span>
+                    <span data-nota="5" class="ativa">★</span>
+                </div>
+                <input type="hidden" id="notaAvaliacaoEscolhida" value="5">
+
+                <div class="input-group">
+                    <label for="comentarioAvaliacao">Conte o que achou do produto:</label>
+                    <textarea id="comentarioAvaliacao" rows="3" required placeholder="Chegou super rápido e em perfeito estado!"></textarea>
+                </div>
+
+                <button type="submit" class="btn-auth">Enviar Avaliação</button>
+            </form>
         </div>
     </div>
 

@@ -783,32 +783,12 @@ body {
     margin-bottom: 22px;
 }
 
-.body-auth {
-    background: radial-gradient(circle at center, var(--azul-marinho) 0%, var(--azul-noite) 60%, var(--preto) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.auth-card {
-    background-color: var(--branco);
-    border-radius: 14px;
-    padding: 36px;
-    width: 100%;
-    max-width: 440px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
 
 .auth-card-wide {
     max-width: 640px;
 }
 
-.auth-header {
-    text-align: center;
-    margin-bottom: 26px;
-}
+
 
 .auth-header h1 {
     color: var(--azul-noite);
@@ -1430,4 +1410,476 @@ body {
 
 .btn-remover-preview:hover {
     background-color: var(--azul-royal);
+}
+
+
+/* =========================================================
+   MELHORIAS VISUAIS, RESPONSIVIDADE, STICKY & BOY GALÁCTICO
+   ========================================================= */
+
+/* Fundo com vida e padrão geométrico sutil ao rolar */
+body {
+    background-color: #eef3fa;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(6, 24, 68, 0.09) 0px, transparent 50%),
+        radial-gradient(#cbd5e1 0.8px, transparent 0.8px);
+    background-size: 100% 100%, 100% 100%, 24px 24px;
+    background-attachment: fixed;
+}
+
+.hero-missao {
+    margin-top: 14px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border-left: 4px solid var(--azul-brilho);
+    border-radius: 8px;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 0.98rem !important;
+}
+
+/* Banners Laterais Sempre Aparentes ao Rolar (Sticky) */
+.banner-lateral {
+    position: relative;
+}
+
+.sticky-sidebar {
+    position: sticky;
+    top: 92px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.card-gradiente {
+    background: linear-gradient(145deg, #1d4ed8 0%, #061844 100%);
+    color: var(--branco);
+    border: none;
+}
+
+.card-gradiente h3, .card-gradiente p {
+    color: var(--branco);
+}
+
+.card-gradiente .btn-banner {
+    background-color: var(--branco);
+    color: var(--azul-noite);
+}
+
+/* Propaganda Dinâmica Inteligente (9.5s) */
+.card-recomendacao-dinamica {
+    border: 2px solid var(--azul-brilho);
+    background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+    transition: transform 0.3s ease;
+}
+
+.topo-dinamico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.barra-progresso-ad {
+    width: 100%;
+    height: 4px;
+    background-color: #dbeafe;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#barraTimerAd {
+    height: 100%;
+    width: 100%;
+    background-color: var(--azul-royal);
+    transform-origin: left;
+}
+
+.animar-timer-ad {
+    animation: encolherBarra 9.5s linear forwards;
+}
+
+@keyframes encolherBarra {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+}
+
+.card-recomendacao-dinamica img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.ad-cat-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--azul-royal);
+    text-transform: uppercase;
+}
+
+.card-recomendacao-dinamica h4 {
+    font-size: 0.92rem;
+    color: var(--preto);
+    margin: 4px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ad-preco-label {
+    font-size: 1.15rem !important;
+    font-weight: 900 !important;
+    color: var(--azul-noite) !important;
+    margin-bottom: 10px !important;
+}
+
+/* Animação de Entrada Gradual dos Produtos */
+.produto-card {
+    animation: surgirCard 0.45s ease forwards;
+}
+
+@keyframes surgirCard {
+    from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.sentinela-scroll {
+    text-align: center;
+    padding: 28px 10px;
+    color: var(--cinza-texto);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Transportadoras no Checkout */
+.modal-pagamento-largo {
+    max-width: 580px;
+    max-height: 92vh;
+    overflow-y: auto;
+}
+
+.titulo-secao-pag {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--azul-noite);
+    margin-bottom: 8px;
+}
+
+.lista-transportadoras {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.card-transportadora {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--cinza-borda);
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--cinza-fundo);
+    transition: all 0.2s;
+}
+
+.card-transportadora:has(input:checked) {
+    border-color: var(--azul-royal);
+    background-color: var(--azul-gelo);
+}
+
+.transp-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.transp-info strong {
+    font-size: 0.9rem;
+    color: var(--preto);
+}
+
+.transp-info span {
+    font-size: 0.78rem;
+    color: var(--cinza-texto);
+}
+
+.transp-preco {
+    font-weight: 800;
+    color: var(--azul-noite);
+    font-size: 0.92rem;
+}
+
+/* Mascote Boy Galáctico */
+.boy-galactico-widget {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 400;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    animation: flutuarBoy 3s ease-in-out infinite;
+}
+
+@keyframes flutuarBoy {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.boy-balao-fala {
+    background: var(--branco);
+    border: 2px solid var(--azul-royal);
+    border-radius: 16px 16px 4px 16px;
+    padding: 14px 18px;
+    max-width: 270px;
+    box-shadow: 0 10px 28px rgba(2, 12, 36, 0.25);
+    position: relative;
+}
+
+.boy-fechar {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--cinza-texto);
+    cursor: pointer;
+}
+
+.boy-nome-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--azul-royal);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.boy-balao-fala p {
+    font-size: 0.86rem;
+    color: var(--preto);
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+/* Modal de Avaliação Pós-Entrega */
+.cabecalho-boy-avaliacao {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(90deg, var(--azul-noite), var(--azul-marinho));
+    color: var(--branco);
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+}
+
+.mini-boy-icone {
+    font-size: 2.2rem;
+}
+
+.boy-badge-entrega {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #60a5fa;
+    letter-spacing: 1px;
+}
+
+.texto-pedido-boy {
+    font-size: 0.9rem;
+    color: var(--preto);
+    margin-bottom: 12px;
+    line-height: 1.45;
+}
+
+.estrelas-seletor {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #cbd5e1;
+}
+
+.estrelas-seletor span.ativa {
+    color: #f59e0b;
+}
+
+/* =========================================================
+   RESPONSIVIDADE (TABLETS E CELULARES)
+   ========================================================= */
+@media (max-width: 1120px) {
+    .conteudo-principal {
+        grid-template-columns: 210px 1fr;
+    }
+    #propaganda_a_Direita {
+        display: none;
+    }
+}
+
+@media (max-width: 820px) {
+    .titulo {
+        flex-wrap: wrap;
+        padding: 14px 18px;
+        gap: 12px;
+    }
+    #Busca {
+        order: 3;
+        max-width: 100%;
+        width: 100%;
+    }
+    .conteudo-principal {
+        grid-template-columns: 1fr;
+        padding: 20px 16px;
+    }
+    #propaganda_a_esquerda {
+        display: none;
+    }
+    .modal-body-produto {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        flex-direction: column;
+    }
+    .input-group-short {
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   DROPDOWN DE CATEGORIAS COM IMAGENS
+   ========================================================= */
+.categoria-dropdown-visual {
+    position: relative;
+}
+
+.btn-categoria-visual {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+    padding: 5px 16px 5px 7px;
+    color: var(--branco);
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-categoria-visual:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: var(--azul-brilho);
+}
+
+.btn-categoria-visual img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--azul-brilho);
+}
+
+.menu-categorias-imagens {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 260px;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-borda);
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgba(2, 12, 36, 0.28);
+    padding: 8px;
+    z-index: 350;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-categorias-imagens.aberto {
+    display: flex;
+}
+
+.opcao-cat-img {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--preto);
+    transition: background 0.2s;
+}
+
+.opcao-cat-img img {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.opcao-cat-img:hover,
+.opcao-cat-img.ativa {
+    background-color: var(--azul-gelo);
+    color: var(--azul-royal);
+}
+
+/* =========================================================
+   PROPAGANDAS LATERAIS OCUPANDO A ALTURA INTEIRA DA TELA
+   ========================================================= */
+.sticky-sidebar-full {
+    position: sticky;
+    top: 86px;
+    height: calc(100vh - 106px);
+    display: flex;
+}
+
+.card-full-height {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 26px 20px;
+}
+
+.img-banner-full {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 12px 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.card-recomendacao-dinamica img {
+    width: 100%;
+    height: 210px !important;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 10px 0;
 }

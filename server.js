@@ -3,13 +3,24 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const pool = require('./db');
+require('dotenv').config({ path: '.env.local' });
 require('dotenv').config();
+
 
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ limit: '15mb', extended: true }));
-app.use(express.static('public'));
+const path = require('path');
+
+// Serve as pastas do seu projeto diretamente
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'index')));
+
+// Redireciona a raiz "/" para o index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index', 'index.html'));
+});
 
 // Configuração de E-mail (Configure EMAIL_USER e EMAIL_PASS no seu .env para envio real)
 const transporter = nodemailer.createTransport({
@@ -232,7 +243,13 @@ app.post('/api/vendedores', async (req, res) => {
 
     await client.query('COMMIT');
 
-    const linkAutorizacao = `http://localhost:${process.env.PORT || 3000}/api/autorizar-vendedor/${chaveAcesso}`;
+
+    //versão original
+    // const linkAutorizacao = `http://localhost:${process.env.PORT || 3000}/api/autorizar-vendedor/${chaveAcesso}`;
+
+
+    //versão nova
+    const linkAutorizacao = `${req.protocol}://${req.get('host')}${process.env.PORT || 3000}/api/autorizar-vendedor/${chaveAcesso}`;
 
     // Envio do E-mail com a Chave de 12 dígitos e o Botão de Autorização
     const mailOptions = {
